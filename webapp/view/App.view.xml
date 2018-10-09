@@ -1,0 +1,276 @@
+<mvc:View displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns:semantic="sap.f.semantic" controllerName="opensap.myapp.controller.App">
+	<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange="onOrientationChange">
+		<masterPages>
+			<!--<l:Splitter>-->
+			<Page id="master" title="Master 1">
+				<content>
+					<layout:VerticalLayout>
+						<GenericTile class="tileLayout sapUiSmallMargin" header="{socialMedia>/data/name/first} {socialMedia>/data/name/last}" subheader="Formula 1"
+							backgroundImage="https://www.gstatic.com/webp/gallery3/2.png" press="onProfile">
+							<TileContent></TileContent>
+						</GenericTile>
+						<SlideTile transitionTime="1000" displayTime="2500" class="sapUiSmallMargin">
+							<GenericTile backgroundImage="https://www.gstatic.com/webp/gallery3/3.png" press="onFriends">
+								<TileContent footer="Felipe Massa">
+									<NewsContent contentText="Formula 1" subheader="Ferrari"/>
+								</TileContent>
+							</GenericTile>
+							<GenericTile backgroundImage="https://www.gstatic.com/webp/gallery3/1.png" press="onFriends">
+								<TileContent footer="Jenson Button">
+									<NewsContent contentText="Formula 1" subheader="McLaren"/>
+								</TileContent>
+							</GenericTile>
+						</SlideTile>
+						<SlideTile transitionTime="1000" displayTime="2500" class="sapUiSmallMargin">
+							<GenericTile backgroundImage="https://www.gstatic.com/webp/gallery3/4.png" press="onGroups">
+								<TileContent footer="Ferrai">
+									<NewsContent contentText="Prancing Horse" subheader="Ferrari"/>
+								</TileContent>
+							</GenericTile>
+							<GenericTile backgroundImage="https://imgs.xkcd.com/comics/online_communities.png" press="onGroups">
+								<TileContent footer="McLaren">
+									<NewsContent contentText="Silver Arrows" subheader="McLaren"/>
+								</TileContent>
+							</GenericTile>
+						</SlideTile>
+					</layout:VerticalLayout>
+				</content>
+			</Page>
+			<!--<layoutData><l:SplitterLayoutData size="auto" /></layoutData>-->
+			<!--</l:Splitter>-->
+		</masterPages>
+		<detailPages>
+			<Page id="profile" title="Profile">
+				<content>
+					<Button text="Back" press="onMaster" class="sapUiHideOnDesktop sapUiHideOnTablet" width="100%"></Button>
+					<Text text="Fernando Alonso profile data"/>
+					<Image src="https://www.gstatic.com/webp/gallery3/3.png" densityAware="false" width="auto" height="auto">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Image>
+				</content>
+			</Page>
+			<semantic:SemanticPage id="friends" toggleHeaderOnTitleClick="false">
+				<semantic:content>
+					<Table id="table" width="auto" items="{socialMedia>/data/friends}" growing="true" growingScrollToLoad="true"
+						updateFinished="onUpdateFinished">
+						<headerToolbar>
+							<Toolbar>
+								<Title id="tableHeader" text="{socialMedia>/data/name/first}'s Friends"/>
+								<ToolbarSpacer/>
+								<SearchField id="searchField" search="onSearch" width="50%"></SearchField>
+								<Button icon="sap-icon://add" press="onAdd"></Button>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="nameColumn">
+								<Text text="Name" id="nameColumnTitle"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Dob"></Text>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Email Address"></Text>
+							</Column>
+							<Column id="unitNumberColumn">
+								<Text text="Age" id="unitNumberColumnTitle"/>
+							</Column>
+							<Column id="imageColumn" hAlign="End">
+								<Text text="" id="imageColumnTitle"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="onPress">
+								<cells>
+									<ObjectIdentifier title="{socialMedia>name/first} {socialMedia>name/last}"/>
+									<ObjectIdentifier title="{socialMedia>dob/date}"/>
+									<Link text="{socialMedia>email}" href="{socialMedia>email}" target="_blank"/>
+									<ObjectNumber number="{socialMedia>dob/age}"/>
+									<Image src="{socialMedia>picture/thumbnail}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</semantic:content>
+				<semantic:sendEmailAction>
+					<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+				</semantic:sendEmailAction>
+			</semantic:SemanticPage>
+			<!--<Page id="friends" title="Friends">
+				<content>
+					<Button text="Back" press="onMaster" class="sapUiHideOnDesktop sapUiHideOnTablet" width="100%"></Button>
+					<Panel expandable="true" expanded="false" headerText="Felipe Massa" width="auto">
+						<content>
+							<Text text="Drove for Sauber, Ferrari and Williams"/>
+							<Image src="https://www.gstatic.com/webp/gallery3/3.png" densityAware="false" width="100px" height="100px">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Image>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" width="auto">
+						<headerToolbar>
+							<Toolbar height="3rem" style="Clear">
+								<Title text="Jenson Button"/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://settings"/>
+								<Button icon="sap-icon://drop-down-list"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Text text="Drove for Brawn and McLaren"/>
+							<Image src="https://www.gstatic.com/webp/gallery3/2.png" densityAware="false" width="100px" height="100px">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Image>
+						</content>
+					</Panel>
+				</content>
+			</Page>-->
+			<Page id="groups" title="Groups">
+				<content>
+					<Button text="Back" press="onMaster" class="sapUiHideOnDesktop sapUiHideOnTablet" width="100%"></Button>
+					<Panel expandable="true" expanded="false" headerText="Ferrai" width="auto">
+						<content>
+							<Text text="Prancing Horse"/>
+							<Image src="https://www.gstatic.com/webp/gallery3/3.png" densityAware="false" width="100px" height="100px">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Image>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" width="auto">
+						<headerToolbar>
+							<Toolbar height="3rem" style="Clear">
+								<Title text="McLaren"/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://settings"/>
+								<Button icon="sap-icon://drop-down-list"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Text text="Silver Arrows"/>
+							<Image src="https://www.gstatic.com/webp/gallery3/2.png" densityAware="false" width="100px" height="100px">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Image>
+						</content>
+					</Panel>
+				</content>
+			</Page>
+		</detailPages>
+	</SplitApp>
+</mvc:View>
+<!--
+<App>
+		<pages>
+			<Page title="App Page">
+				<content>
+					<IconTabBar class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter text="Social">
+								<layout:VerticalLayout >
+									<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Fernando Alonso" subheader="Formula 1"
+										backgroundImage="https://www.gstatic.com/webp/gallery3/2.png" press="press">
+										<TileContent>
+										</TileContent>
+									</GenericTile>
+									<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" transitionTime="2500" displayTime="2500">
+										<GenericTile backgroundImage="https://www.gstatic.com/webp/gallery3/3.png" press="pressOnTileOne">
+											<TileContent footer="Felipe Massa">
+												<NewsContent contentText="Formula 1" subheader="Ferrari"/>
+											</TileContent>
+										</GenericTile>
+										<GenericTile backgroundImage="https://www.gstatic.com/webp/gallery3/5.png">
+											<TileContent footer="Jenson Button">
+												<NewsContent contentText="Formula 1" subheader="McLaren"/>
+											</TileContent>
+										</GenericTile>
+									</SlideTile>
+								</layout:VerticalLayout>
+							</IconTabFilter>
+							<IconTabFilter text="Tab 1">
+								<Carousel>
+									<pages>
+										<Image src="https://www.gstatic.com/webp/gallery3/2.png" height="200px"></Image>
+										<Image src="https://www.gstatic.com/webp/gallery3/3.png" height="200px"></Image>
+									</pages>
+								</Carousel>
+								<Button text="Click me!" press="onButtonClick"></Button>
+								<Input
+									value="{path: 'helloPanel>/recipient/name', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits:2}, constraints: {maximum:3000} }"
+									description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="false" width="500px"></Input>
+							</IconTabFilter>
+							<IconTabFilter text="Tab 2">
+								<MessageStrip showIcon="true" type="Information" text="This is Message Strip"></MessageStrip>
+								<f:SimpleForm class="editableForm sapUiSmallMarginTopBottom">
+									<f:content>
+										<Label text="Name"></Label>
+										<Input value="Enter Name"></Input>
+										<Label text="Surname"></Label>
+										<Input value="Enter Surname"></Input>
+										<Label text="DOB"></Label>
+										<Input value="Enter DOB"></Input>
+										<Label text="Age"></Label>
+										<Input value="Enter Age"></Input>
+										<Label text="Country"></Label>
+										<Select>
+											<core:Item text="Germany"></core:Item>
+											<core:Item text="Netherland"></core:Item>
+											<core:Item text="Iceland"></core:Item>
+										</Select>
+									</f:content>
+								</f:SimpleForm>
+								<Toolbar>
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button text="Publish" type="Accept" icon="sap-icon://outbox"></Button>
+									<Button text="Save As Draft" type="Reject" icon="sap-icon://save"></Button>
+								</Toolbar>
+							</IconTabFilter>
+							<IconTabFilter text="Data Binding">
+								<content>
+									<List id="productList" items="{ path: '/ProductSet', parameters: { expand: 'ToSupplier'}, sorter: { path: 'Category', group: true}}"
+										growing="true" growingThreshold="5" growingScrollToLoad="false">
+										<headerToolbar>
+											<Toolbar>
+												<ToolbarSpacer></ToolbarSpacer>
+												<SearchField id="searchProductControl" search="onProductSearch" width="50%"></SearchField>
+											</Toolbar>
+										</headerToolbar>
+										<items>
+											<ObjectListItem title="{Name}"
+												number="{ parts:[ {path:'Price'}, {path:'CurrencyCode'} ], type:'sap.ui.model.type.Currency', formatOptions:{showMeasure:false} }"
+												intro="{ProductID}" numberUnit="{CurrencyCode}" numberState="{= ${Price} > 500 ? 'Error' : 'Success'}" press="onProductSelected"
+												type="Active">
+												<secondStatus>
+													<ObjectStatus text="{ parts : [{path:'WeightUnit'}, {path:'WeightMeasure'}], formatter : '.formatter.delivery' }"></ObjectStatus>
+												</secondStatus>
+												<firstStatus>
+													<ObjectStatus text="{ToSupplier/Address/City}"></ObjectStatus>
+												</firstStatus>
+											</ObjectListItem>
+										</items>
+									</List>
+									<Panel id="productDetailsPanel" visible="false" headerText="Product Details">
+										<l:Grid>
+											<Text text="ProductID:{ProductID}"></Text>
+											<Text text="Product Name:{Name}"></Text>
+											<Text text="Price:{Price}"></Text>
+											<Text text="Weight:{WeightMeasure}"></Text>
+										</l:Grid>
+									</Panel>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+-->

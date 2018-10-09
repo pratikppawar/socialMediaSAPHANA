@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script
+			id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-preload="async"
+			data-sap-ui-resourceroots='{"opensap.myapp" : "./"}'
+		>
+		</script>
+		
+		<script>
+			/*sap.ui.getCore().attachInit(function(){
+				//alert("SAPUI5 is ready!");
+				/*var oImage = new sap.m.Image({
+					src:"https://www.gstatic.com/webp/gallery3/2.png"
+				}).placeAt("content");
+				oImage.setHeight("100px");*/
+				/*sap.ui.xmlview({
+					viewName:"opensap.myapp.view.App"
+				}).placeAt("content");
+				
+				// workaround begin: start a mock server
+				jQuery.sap.require("sap.ui.core.util.MockServer");
+				var oMockServer = new sap.ui.core.util.MockServer({
+					rootUri: "/destinations/ES5/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/"
+				});
+				oMockServer.simulate("metadata.xml", {
+					sMockdataBaseUrl: "mockdata",
+					bGenerateMissingMockData: true
+				});
+				oMockServer.start();
+				// workaround end
+
+
+				new sap.ui.core.ComponentContainer({
+					name : "opensap.myapp"
+				}).placeAt("content");
+			})*/
+			
+			sap.ui.getCore().attachInit(function () {
+			sap.ui.require([
+				"sap/m/Shell",
+				"sap/ui/core/ComponentContainer"
+			], function (Shell, ComponentContainer) {
+				// initialize the UI component
+				new Shell({
+					app: new ComponentContainer({
+						height: "100%",
+						name: "opensap.myapp",
+					})
+				}).placeAt("content");
+			});
+		});
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+		
+	</body>
+</html>
