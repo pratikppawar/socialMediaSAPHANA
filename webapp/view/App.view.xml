@@ -43,13 +43,22 @@
 		<detailPages>
 			<Page id="profile" title="Profile">
 				<content>
-					<Button text="Back" press="onMaster" class="sapUiHideOnDesktop sapUiHideOnTablet" width="100%"></Button>
-					<Text text="Fernando Alonso profile data"/>
-					<Image src="https://www.gstatic.com/webp/gallery3/3.png" densityAware="false" width="auto" height="auto">
-						<layoutData>
-							<FlexItemData growFactor="1"/>
-						</layoutData>
-					</Image>
+						<f:SimpleForm
+						editable="false"
+						layout="ResponsiveGridLayout"
+						labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+						columnsL="1" columnsM="1">
+						<f:content>
+							<Label text="" />
+							<Image src="{socialMedia>/data/picture/large}"/>
+							<Label text="{i18n>formName}" />
+							<Text text="{socialMedia>/data/name/title} {socialMedia>/data/name/first} {socialMedia>/data/name/last}" />
+							<Label text="{i18n>emailAddress}" />
+							<Text text="{socialMedia>/data/email}" />
+							<Label text="{i18n>formPhoneHome}" />
+							<Text text="{socialMedia>/data/phone}" />
+						</f:content>
+					</f:SimpleForm>       
 				</content>
 			</Page>
 			<semantic:SemanticPage id="friends" toggleHeaderOnTitleClick="false">
