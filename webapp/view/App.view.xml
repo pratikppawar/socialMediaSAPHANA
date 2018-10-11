@@ -57,6 +57,8 @@
 							<Text text="{socialMedia>/data/email}" />
 							<Label text="{i18n>formPhoneHome}" />
 							<Text text="{socialMedia>/data/phone}" />
+							<Label text="{i18n>formGender}" />
+							<Text text="{socialMedia>/data/gender}" />
 						</f:content>
 					</f:SimpleForm>       
 				</content>
