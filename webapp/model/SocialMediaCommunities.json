@@ -1,0 +1,26 @@
+{  
+   "data":{  
+      "communities":[  
+			         {  
+				    	"name":"TapIntoTwitter",
+				    	"owner":"Angus Fox",
+				    	"ownerImage":{
+								         "large":"https://randomuser.me/api/portraits/men/68.jpg",
+								         "medium":"https://randomuser.me/api/portraits/med/men/68.jpg",
+								         "thumbnail":"https://randomuser.me/api/portraits/thumb/men/68.jpg"
+				    	},
+				    	"url":"https://twitter.com/hashtag/TapIntoTwitter?src=hash"
+					},				
+				   {  
+				      "name":"TwitterBoulder",
+				      "owner":"Flatirons LGBTQ Tech",
+				      "ownerImage":{  
+							         "large":"https://randomuser.me/api/portraits/men/6.jpg",
+							         "medium":"https://randomuser.me/api/portraits/med/men/6.jpg",
+							         "thumbnail":"https://randomuser.me/api/portraits/thumb/men/6.jpg"
+						},
+				      "url":"https://twitter.com/TwitterBoulder?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Ecollection%3A770377508369891328&ref_url=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fcommunity.html"
+				   }
+      ]
+   }
+}

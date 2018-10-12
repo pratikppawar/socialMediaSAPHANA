@@ -67,6 +67,14 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/SocialMedia.json"
 			},
+			"socialMediaFriends": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/SocialMediaFriends.json"
+			},
+			"socialMediaCommunities": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/SocialMediaCommunities.json"
+			},
 			"": {
 				"dataSource": "ES5",
 				"settings": {

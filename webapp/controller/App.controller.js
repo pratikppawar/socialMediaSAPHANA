@@ -55,12 +55,33 @@ sap.ui.define([
 			this.getSplitAppObj().to(this.createId("profile"));
 		},
 		
-		onGroups : function(oEvent) {
-			this.getSplitAppObj().to(this.createId("groups"));
+		onCommunities : function(oEvent) {
+			this.getSplitAppObj().to(this.createId("communities"));
 		},
 		
 		onMaster : function(oEvent) {
 			this.getSplitAppObj().to(this.createId("master"));
-		}
+		},
+		
+		onSearch : function (oEvent) {
+				if (oEvent.getParameters().refreshButtonPressed) {
+					// Search field's 'refresh' button has been pressed.
+					// This is visible if you select any master list item.
+					// In this case no new search is triggered, we only
+					// refresh the list binding.
+					this.onRefresh();
+				} else {
+					var aTableSearchState = [];
+					var sQuery = oEvent.getParameter("query");
+					var isFriendsSearch = oEvent.getSource().getId().toString().indexOf("friendsSearchField") !== -1;
+					var filterField = isFriendsSearch ? "name/first" : "name";
+					var oTable = isFriendsSearch ? this.byId("friendsTable") : this.byId("communitiesTable");
+					
+					if (sQuery && sQuery.length > 0) {
+						aTableSearchState = [new Filter(filterField, FilterOperator.Contains, sQuery)];
+					}
+					oTable.getBinding("items").filter(aTableSearchState, "Application");
+				}
+		},
 	});
 });
